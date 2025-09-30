@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . .
 
-# Instala dependências necessárias
+# Instala dependências
 RUN pip install --no-cache-dir fastapi uvicorn python-multipart
 
 # Cria pasta para uploads
@@ -13,4 +13,5 @@ RUN mkdir -p data/audio
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Ajuste: main.py está na raiz, então referência é só "main:app"
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
